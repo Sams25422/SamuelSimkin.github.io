@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Samuel Simkin - Electrical Engineer Project Portfolio">
     <title>Samuel Simkin - Electrical Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -14,9 +15,47 @@
             color: #e0e0e0;
         }
 
+        /* Sticky Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #f39c12;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
         header {
             text-align: center;
-            padding: 50px;
+            padding: 100px 50px 50px;
             background-color: #2c2c2c;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
         }
@@ -29,28 +68,7 @@
             text-transform: uppercase;
         }
 
-        nav {
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        nav a {
-            margin: 0 20px;
-            text-decoration: none;
-            color: #e0e0e0;
-            font-weight: bold;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 30px;
-            background-color: #333;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #f39c12;
-            color: #ffffff;
-        }
-
+        /* Section Summary */
         .section-summary {
             background-color: #2c2c2c;
             padding: 10px;
@@ -58,21 +76,15 @@
             color: #f39c12;
             font-size: 1.1em;
             margin-bottom: 20px;
-            margin-top: -10px;
         }
 
-        .tab {
-            display: none;
-        }
-
-        .tab.active {
-            display: block;
-        }
-
+        /* Tabs and buttons */
         .tabs {
             display: flex;
             justify-content: center;
             background-color: #2c2c2c;
+            position: relative;
+            top: 60px;
         }
 
         .tabs button {
@@ -268,37 +280,68 @@
             z-index: 1001;
         }
 
+        /* Fade-in animations */
+        section {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media only screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .photo-album {
+                flex-direction: column;
+            }
+
+            .album-image, .album-video {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#ongoing-projects">Ongoing Projects</a></li>
+            <li><a href="#previous-projects">Previous Projects</a></li>
+            <li><a href="#side-projects">Side Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
     <header>
         <h1>Samuel Simkin</h1>
     </header>
 
-    <!-- Tabs Navigation -->
-    <div class="tabs">
-        <button onclick="showTab('work', 'Summary of my work experience in the engineering field, including my roles and responsibilities.')">Work</button>
-        <button onclick="showTab('ongoing-projects', 'Current projects I am working on, including ongoing developments and innovations.')">Ongoing Projects</button>
-        <button onclick="showTab('previous-projects', 'Previous projects that showcase my engineering skills and creativity.')">Previous Projects</button>
-        <button onclick="showTab('side-projects', 'Smaller side projects I have worked on that were fun experiments and learning opportunities.')">Side Projects</button>
-        <button onclick="showTab('contact', 'Feel free to contact me.')">Contact</button>
-    </div>
-
-    <!-- Section summary -->
+    <!-- Section Summary -->
     <div class="section-summary" id="section-summary">
         Welcome to my portfolio! Please explore my work, projects, and experiences.
     </div>
 
-    <!-- Work Section without Photos and Videos -->
+    <!-- Work Section -->
     <section class="section tab" id="work">
         <h2>Work Experience</h2>
-
         <div class="slide active">
             <div class="work-title">Electrical Quality Engineer</div>
             <div class="work-details">American Honda Motor Company</div>
             <div class="work-details">June 2022 - Present</div>
-            <p>As an Electrical Quality Engineer at Honda, I work closely with cross-functional teams to improve processes, enhance vehicle quality, and ensure compliance with safety standards.</p>
+            <p>As an Electrical Quality Engineer at Honda, I work closely with cross-functional teams to improve processes and enhance vehicle quality.</p>
             <ul>
                 <li>Worked closely with cross-functional teams to identify and implement process improvements, enhancing overall quality.</li>
                 <li>Conducted data analysis to identify trends, patterns, and opportunities for improvement, providing insights for hardware design validations.</li>
@@ -386,14 +429,17 @@
                 <div class="timeline-phase">
                     <h3>Phase 4: Building the Smart Bartender</h3>
                     <p class="description">This final phase involves integrating both the hardware and software to build a fully functioning smart bartender. It includes testing the system with real-world use cases to ensure consistent performance and reliability.</p>
+                    <div class="photo-album">
+                        <div class="album-image">
+                            <img src="final-build.jpg" alt="Final Build">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="slide">
-            <h2 class="ongoing-title">3.5mm Aux to Bluetooth Adapter</h2>
-
+            <h2 class="ongoing-title">Aux to Bluetooth</h2>
             <div class="timeline">
                 <div class="timeline-phase">
                     <h3>Phase 1: Schematic and PCB Design</h3>
@@ -630,6 +676,30 @@
         document.querySelectorAll('.album-image img').forEach(img => {
             img.addEventListener('click', function() {
                 openLightbox(this.src);
+            });
+        });
+
+        // Fade-in sections on scroll
+        window.addEventListener("scroll", function() {
+            const sections = document.querySelectorAll("section");
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        // Lazy loading for images and videos
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll('img');
+            lazyImages.forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+
+            const lazyVideos = document.querySelectorAll('video');
+            lazyVideos.forEach(video => {
+                video.setAttribute('loading', 'lazy');
             });
         });
 
